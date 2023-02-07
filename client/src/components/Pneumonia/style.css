@@ -1,0 +1,45 @@
+.file-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .file-input input[type='file'] {
+    display: none;
+  }
+  
+  .file-input button {
+    padding: 10px 20px;
+    background-color: #4b9667;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 10px;
+  }
+  
+  .result-placeholder p {
+    font-size: 16px;
+    color: #999;
+    text-align: center;
+  }
+  
+  .result-container {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .result-container h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .result-container p {
+    font-size: 16px;
+  }
+  

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
+import Pneuomonia from '../../components/Pneumonia/Pneomonia';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
@@ -18,6 +19,7 @@ import { ConfirmDialog, Popup, Prescription } from '../../components';
 
 import useStyles from './styles';
 
+
 export default function StickyHeadTable(props) {
     const { columns, rows } = props;
     const classes = useStyles();
@@ -31,6 +33,7 @@ export default function StickyHeadTable(props) {
     const [confirmDialog, setConfirmDialog] = React.useState({isOpen: false, title: '', subTitle: ''});
     const [openPopup, setOpenPopup] = React.useState(false);
     const [appointment, setAppointment] = React.useState({});
+    const [openPneumonia, setOpenPneumonia] = React.useState(false);
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -159,7 +162,7 @@ return (
                                     ?   <Tooltip title="Attend to patient">
                                             <Button color="primary" disabled={loading}
                                             onClick={() => {
-                                                setOpenPopup(true);
+                                                setOpenPneumonia(true);
                                                 setAppointment(row);
                                             }}
                                             >
@@ -197,6 +200,12 @@ return (
             <Popup title="Make a prescription" openPopup={openPopup} setOpenPopup={setOpenPopup}>
                 <div>
                     <Prescription appointment={appointment} />
+                </div>            
+            </Popup>
+
+            <Popup title="Make a pneumonia test" openPopup={openPneumonia} setOpenPopup={setOpenPneumonia}>
+                <div>
+                    <Pneuomonia  />
                 </div>            
             </Popup>
         </>

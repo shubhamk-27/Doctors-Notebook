@@ -4,12 +4,12 @@ import { Link,Typography } from '@material-ui/core';
 function Copyright (){
     return (
         <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
+            {/* {'Copyright © '}
             <Link color="inherit" href="https://www.khethelogp.com" target="blank">
                 KhetheloGP 🌵
             </Link>{' '}
             {new Date().getFullYear()}
-            {'.'}
+            {'.'} */}
         </Typography>
     );
 }
