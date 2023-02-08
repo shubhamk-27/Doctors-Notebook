@@ -38,15 +38,21 @@ const afterUploadStyle = {
   textAlign: "left",
 };
 
-const Prescription = ({ appointment }) => {
+const Pneomonia = ({ appointment }) => {
   const classes = useStyles();
   const [resultPneumonia, setresultPneumonia] = useState(null);
 
   const [file, setFile] = useState(null);
+  const [fileName, setFileName] = useState("");
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
+    setFileName(event.target.files[0].name);
   };
+
+  useEffect(() => {
+    console.log(resultPneumonia);
+  }, [resultPneumonia]);
 
   const handleUpload = () => {
     if (!file) {
@@ -102,8 +108,10 @@ const Prescription = ({ appointment }) => {
           <div className="content xraypred">
             <div className="upload-container">
               <h2>Upload X-Ray Image to Detect Pneumonia</h2>
-              <div className="file-input">
+              <div className="choose">
                 <input type="file" onChange={handleFileChange} />
+              </div>
+              <div className="file-input">
                 <button onClick={handleUpload}>Upload</button>
               </div>
             </div>
@@ -131,4 +139,4 @@ const Prescription = ({ appointment }) => {
   );
 };
 
-export default Prescription;
+export default Pneomonia;
