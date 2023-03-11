@@ -8,6 +8,7 @@ import useStyles from "./styles";
 import { Button, message, Upload } from "antd";
 import { uploadImagepneumonia } from "./api";
 import "./style.css";
+
 const beforeUploadStyle = {
   fontSize: "16px",
   fontWeight: "normal",
@@ -40,8 +41,9 @@ const afterUploadStyle = {
 
 const Pneomonia = ({ appointment }) => {
   const classes = useStyles();
-  const [resultPneumonia, setresultPneumonia] = useState(null);
-
+  const { currentUser } = useAuth();
+  const [resultPneumonia, setresultPneumonia] = useState(0);
+  const { prescribePneumonia } = useDB();
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("");
 
@@ -96,11 +98,25 @@ const Pneomonia = ({ appointment }) => {
       fmData.append("image", file);
       const data = await uploadImagepneumonia(fmData);
       setresultPneumonia(data.data[0]);
+
       onSuccess("Ok");
     } catch (error) {
       onError(error);
     }
   };
+
+  useEffect(() => {
+    try {
+      prescribePneumonia(
+        appointment.id,
+        currentUser.displayName || "you",
+        resultPneumonia
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }, [resultPneumonia]);
+
   return (
     <Paper className={classes.paperContent} elevation={5}>
       <div className="container">

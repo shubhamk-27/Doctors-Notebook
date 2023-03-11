@@ -9,6 +9,7 @@ import {
   query,
   where,
   updateDoc,
+  setDoc,
 } from "firebase/firestore";
 import { useAuth } from "./AuthContext";
 
@@ -195,6 +196,13 @@ export default function DbProvider({ children }) {
     });
   };
 
+  const prescribePneumonia = async (id, name, result) => {
+    await setDoc(doc(db, "appointments", id), {
+      status: `attended to by ${name}`,
+      pneumoniaDetected: result,
+    });
+  };
+
   // value to return forn useDB();
   const value = {
     users,
@@ -213,6 +221,7 @@ export default function DbProvider({ children }) {
     deleteAppointment,
     prescribeMeds,
     createNewPrescription,
+    prescribePneumonia,
   };
 
   useEffect(() => {

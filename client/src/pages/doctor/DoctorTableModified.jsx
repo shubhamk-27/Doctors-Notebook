@@ -70,6 +70,7 @@ export default function StickyHeadTable(props) {
         setLoading(false);
     }
 
+    
 return (
         <>
             <Paper sx={{ width: '100%', overflow: 'hidden' }} elevation={0}>
@@ -101,6 +102,10 @@ return (
                         <TableCell align="end">
                             Pneumonia Test 
                         </TableCell>
+
+                            <TableCell align="end">
+                                 Result 
+                            </TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -175,6 +180,21 @@ return (
                                     :   "" 
                                 }
                             </TableCell>
+
+                            <TableCell align="start">
+                                {
+                                    <div>
+                                        {row.pneumoniaDetecte  == 0 ? <div><h3 style={{
+                                            color: "red"
+                                        }}>Negative</h3></div>
+                                        : 
+                                        <div><h3 style={{
+                                            color: "green"
+                                        }}>Negative</h3></div>}
+                                        {/* <h2>hello</h2> */}
+                                    </div>    
+                                }
+                            </TableCell>
                         </TableRow>
                         );
                     })}
@@ -205,7 +225,7 @@ return (
 
             <Popup title="Make a pneumonia test" openPopup={openPneumonia} setOpenPopup={setOpenPneumonia}>
                 <div>
-                    <Pneuomonia  />
+                    <Pneuomonia appointment={appointment} />
                 </div>            
             </Popup>
         </>
