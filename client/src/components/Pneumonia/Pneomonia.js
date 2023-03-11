@@ -42,7 +42,7 @@ const afterUploadStyle = {
 const Pneomonia = ({ appointment }) => {
   const classes = useStyles();
   const { currentUser } = useAuth();
-  const [resultPneumonia, setresultPneumonia] = useState(0);
+  const [resultPneumonia, setresultPneumonia] = useState(null);
   const { prescribePneumonia } = useDB();
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("");
